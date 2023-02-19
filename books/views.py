@@ -20,6 +20,7 @@ class BookDetailView(LoginRequiredMixin,
     template_name = "books/book_detail.html"
     login_url = "account_login"
     permission_required = "books.special_status"
+    queryset = Book.objects.all().prefetch_related('reviews__author',)
 
 
 class SearchResultsListView(ListView):
